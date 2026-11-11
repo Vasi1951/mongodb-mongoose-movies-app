@@ -1,0 +1,20 @@
+{
+  "name": "mongodb-mongoose-app",
+  "version": "1.0.0",
+  "description": "Movies Rest API using Mongoose",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [],
+  "author": "Dr P Sudhakar",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "mongodb": "^7.6.0",
+    "mongoose": "^9.9.5"
+  }
+}
