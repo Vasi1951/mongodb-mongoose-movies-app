@@ -10,14 +10,17 @@ const port = process.env.PORT || 8080;
 app.use(express.json());
 
 // MongoDB connection
-const mongoUrl = process.env.MONGO_FULL_URI;
+const mongoUrl = process.env.MONGO_FULL_URI || process.env.MONGO_URI;
 
-try {
-  await mongoose.connect(mongoUrl);
-  console.log("Connected to MongoDB");
-} catch (err) {
-  console.error("Failed to connect to MongoDB", err);
-  process.exit(1);
+if (mongoUrl) {
+  try {
+    await mongoose.connect(mongoUrl);
+    console.log("Connected to MongoDB");
+  } catch (err) {
+    console.error("Failed to connect to MongoDB", err);
+  }
+} else {
+  console.warn("MONGO_FULL_URI not set; starting server without MongoDB connection");
 }
 
 const movieSchema = new mongoose.Schema({
